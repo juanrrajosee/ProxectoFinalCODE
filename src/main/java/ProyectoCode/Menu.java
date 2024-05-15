@@ -4,10 +4,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
+/**
+ * Esta clase implementa un menu interactivo que proporciona información sobre los planetas del sistema solar.
+ */
 public class Menu {
 
+    //Mapa que almacena las temperaturas de los planetas
     private static Map<String, Double> temperaturas = new HashMap<>();
 
+    /**
+     * Método principal que inicia el programa.
+     */
     public static void main(String[] args) {
         Scanner sn = new Scanner(System.in);
 
@@ -15,10 +23,9 @@ public class Menu {
         int opcion;
         String planetaElegido = "";
 
-        inicializarTemperaturas();
 
         while (!salir) {
-
+            //Menu de planetas
             System.out.println("\n\t-- SISTEMA SOLAR --");
             System.out.println("1.- Mercurio");
             System.out.println("2.- Venus");
@@ -30,6 +37,7 @@ public class Menu {
             System.out.println("8.- Neptuno");
             System.out.println("10.- Salir del programa");
 
+            //Seleccion de planetas
             try {
                 System.out.println("Seleccione un planeta del Sistema Solar (1-8): ");
                 int planetaSeleccionado = sn.nextInt();
@@ -75,6 +83,7 @@ public class Menu {
                 sn.next();
             }
 
+            //Menu de opciones
             if (!salir) {
                 System.out.println("\n\t-- MENU --");
                 System.out.println("1.- Temperatura");
@@ -86,6 +95,7 @@ public class Menu {
                 System.out.println("7.- Cambiar de planeta");
                 System.out.println("8.- Salir");
 
+                //Eleccion de opciones
                 try {
                     System.out.println("Seleccione la opcion deseada: ");
                     opcion = sn.nextInt();
@@ -107,13 +117,13 @@ public class Menu {
                             mostrarPosibilidadSupervivencia(planetaElegido);
                             break;
                         case 6:
-                            // Llamada al método para calcular el peso en el planeta elegido
+
                             calcularPesoEnPlaneta(planetaElegido);
                             break;
                         case 7:
                             break;
                         case 8:
-                            salir=true;
+                            salir = true;
                             break;
                         default:
                             System.out.println("Las opciones son entre 1 y 7");
@@ -128,7 +138,15 @@ public class Menu {
         System.out.println("Gracias por utilizar el sistema, hasta luego...");
     }
 
-    private static void inicializarTemperaturas() {
+
+    /**
+     * Muestra la temperatura del planeta especificado.
+     *
+     * @param planeta El nombre del planeta del que se desea conocer la temperatura.
+     */
+    public static void mostrarTemperatura(String planeta) {
+        // Inicialización de temperaturas
+        Map<String, Double> temperaturas = new HashMap<>();
         temperaturas.put("Mercurio", 167.0);
         temperaturas.put("Venus", 462.0);
         temperaturas.put("Tierra", 15.0);
@@ -137,9 +155,8 @@ public class Menu {
         temperaturas.put("Saturno", -140.0);
         temperaturas.put("Urano", -195.0);
         temperaturas.put("Neptuno", -200.0);
-    }
 
-    public static void mostrarTemperatura(String planeta) {
+        // Mostrar la temperatura del planeta especificado
         if (temperaturas.containsKey(planeta)) {
             double temperatura = temperaturas.get(planeta);
             System.out.println("La temperatura de " + planeta + " es de : " + temperatura + " grados Celsius");
@@ -148,7 +165,11 @@ public class Menu {
         }
     }
 
-
+    /**
+     * Muestra información sobre la superficie del planeta especificado.
+     *
+     * @param planeta El nombre del planeta del que se desea conocer la información de la superficie.
+     */
     public static void mostrarSuperficie(String planeta) {
         // Mapa que contiene la superficie de cada planeta
         Map<String, String> superficies = new HashMap<>();
@@ -170,6 +191,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Muestra la distancia desde la Tierra al planeta especificado y el tiempo estimado de viaje.
+     *
+     * @param planeta El nombre del planeta del que se desea conocer la distancia y el tiempo de viaje.
+     */
     public static void mostrarDistancia(String planeta) {
         // Mapa que contiene la distancia de cada planeta a la Tierra en UA
         Map<String, Double> distancias = new HashMap<>();
@@ -196,6 +222,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Muestra la gravedad del planeta especificado.
+     *
+     * @param planeta El nombre del planeta del que se desea conocer la gravedad.
+     */
     public static void mostrarGravedad(String planeta) {
         // Mapa que contiene la gravedad de cada planeta en m/s^2
         Map<String, Double> gravedades = new HashMap<>();
@@ -217,6 +248,12 @@ public class Menu {
         }
     }
 
+
+    /**
+     * Muestra información sobre por qué no se puede sobrevivir en el planeta especificado.
+     *
+     * @param planeta El nombre del planeta del que se desea conocer la información de supervivencia.
+     */
     public static void mostrarPosibilidadSupervivencia(String planeta) {
         // Mapa que contiene las explicaciones de por qué no se puede sobrevivir en cada planeta
         Map<String, String> explicaciones = new HashMap<>();
@@ -236,6 +273,11 @@ public class Menu {
         }
     }
 
+    /**
+     * Calcula y muestra el peso de una persona en el planeta especificado.
+     *
+     * @param planeta El nombre del planeta en el que se desea calcular el peso.
+     */
     public static void calcularPesoEnPlaneta(String planeta) {
         Scanner sn = new Scanner(System.in);
         System.out.println("Introduce tu peso en la Tierra (en kilogramos): ");
