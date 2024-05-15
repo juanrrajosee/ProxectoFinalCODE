@@ -10,8 +10,6 @@ import java.util.Scanner;
  */
 public class Menu {
 
-    //Mapa que almacena las temperaturas de los planetas
-    private static Map<String, Double> temperaturas = new HashMap<>();
 
     /**
      * Método principal que inicia el programa.
